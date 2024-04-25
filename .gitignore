@@ -59,6 +59,8 @@ Thumbs.db
 secrets.yml
 secrets.json
 *.key
+*.ipynb
+
 
 # Ignore database files
 *.sqlite
