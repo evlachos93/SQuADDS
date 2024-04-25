@@ -85,6 +85,10 @@ class ScalingInterpolator(Interpolator):
         print(f"Kappa scaling: {kappa_scaling}")
         print(f"g scaling: {g_scaling.values[0]}")
         print(f"alpha scaling: {alpha_scaling.values[0]}")
+        print(f"Updated coupling length: {closest_coupler_length}")
+        print(f"Updated cross length: {updated_cross_length}")
+        print(f"Updated claw length: {updated_claw_length}")
+        print(f"Updated resonator length: {updated_resonator_length}")
         print("="*50)
         updated_coupling_length = string_to_float(closest_cavity_cpw_design["design_options_cavity_claw"].iloc[0]['cplr_opts']['coupling_length']) * kappa_scaling
         # round updated_coupling_length to nearest integer
@@ -92,10 +96,7 @@ class ScalingInterpolator(Interpolator):
 
         """
         print("="*50)
-        print(f"Updated resonator length: {updated_resonator_length}")
-        print(f"Updated coupling length: {updated_coupling_length}")
-        print(f"Updated cross length: {updated_cross_length}")
-        print(f"Updated claw length: {updated_claw_length}")
+        
         print("="*50)
         """
 
@@ -117,7 +118,6 @@ class ScalingInterpolator(Interpolator):
         qubit_design_options['q3d_inductance'] = required_Lj*1e-9
         qubit_design_options['hfss_inductance'] = required_Lj*1e-9
         qubit_design_options["connection_pads"]["readout"]['Lj'] = f"{required_Lj}nH"
-
         cavity_design_options = closest_cavity_cpw_design["design_options_cavity_claw"].iloc[0]
         cavity_design_options["cpw_opts"]['total_length'] = f"{updated_resonator_length}um"
         cavity_design_options['cplr_opts']['coupling_length'] = f"{updated_coupling_length}um"

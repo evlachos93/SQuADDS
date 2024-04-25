@@ -264,7 +264,7 @@ class TransmonCrossHamiltonian(QubitHamiltonian):
         alpha = transmon.anharmonicity() * 1E3  # MHz
         return E01, alpha
     
-    def chi(self, EJ, EC, g, f_r):
+    def chi(self, alpha, omega_q, g, f_r):
         """
         Calculate the full cavity frequency shift between |0> and |1> states of a qubit using g, f_r, f_q, and alpha. It uses the result derived using 2nd-order pertubation theory (equation 9 in SquaDDs paper).
 
@@ -280,8 +280,6 @@ class TransmonCrossHamiltonian(QubitHamiltonian):
         """
         omega_r = 2 * np.pi * f_r * 1e9
         transmon = Transmon(EJ=EJ, EC=EC, ng=0, ncut=30)
-        alpha = transmon.anharmonicity() * 1E3  # MHz, linear or angular
-        omega_q = transmon.E01() # is this in linear or angular frequency units
         delta = omega_r - omega_q
         sigma = omega_r + omega_q
 
