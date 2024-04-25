@@ -60,7 +60,7 @@ secrets.yml
 secrets.json
 *.key
 *.ipynb
-*.csv
+
 
 # Ignore database files
 *.sqlite
